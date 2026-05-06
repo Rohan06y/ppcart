@@ -345,12 +345,12 @@ body {
 <div class="search-container">
     <div class="search-wrapper">
         <span class="search-icon">🔍</span>
-        <input type="text" id="search-bar" class="search-input" placeholder="Search products..." onkeyup="filterProducts()">
+        <input type="text" id="search-bar" class="search-input" placeholder="Search products..." onkeyup="filterProducts()" oninput="toggleCategoryBar(this.value)">
     </div>
 </div>
 <!-- CATEGORY FILTER -->
 <!-- CATEGORY ICON BAR -->
-<div class="category-bar">
+<div class="category-bar" id="category-bar">
     <div class="cat-icon active" onclick="filterCategory(event,'all')">
         <div class="cat-emoji">🛒</div>
         <div class="cat-label">All</div>
@@ -5342,7 +5342,7 @@ body {
 
         <div style="
             font-size: 40px;
-            color: var(--pp-orange);
+            color: #767676;
             user-select: none;
         ">
           &#11165;
@@ -5379,10 +5379,6 @@ body {
             font-weight:900;
             color:#fff;">
             Grand Total: ₹0
-        </div>
-
-        <div id="min-order-warning" style="display:none; margin-top:10px; background:rgba(255,255,255,0.2); border:1.5px solid rgba(255,255,255,0.5); color:#fff; border-radius:10px; padding:8px 12px; font-size:13px; font-weight:700; text-align:center;">
-            ⚠️ Add <span id="min-order-gap"></span> more to reach minimum order of ₹80
         </div>
     </div>
 </div>
@@ -5475,6 +5471,15 @@ document.querySelectorAll('.price-box').forEach(box => {
         });
     }
 
+    function toggleCategoryBar(value) {
+        const categoryBar = document.getElementById('category-bar');
+        if (value.length > 0) {
+            categoryBar.style.display = 'none'; // hide while searching
+        } else {
+            categoryBar.style.display = 'flex'; // show when search cleared
+        }
+    }
+
     function getLocation() {
         const text = document.getElementById('loc-text');
         if (navigator.geolocation) {
@@ -5563,16 +5568,6 @@ document.querySelectorAll('.price-box').forEach(box => {
     document.getElementById('delivery-charge').innerText = `Delivery & Handling: ₹${delivery}`;
     document.getElementById('platform-fee').innerText = `Platform Fee: ₹${platformFee}`;
     document.getElementById('grand-total').innerText = `Grand Total: ₹${grandTotal}`;
-
-    // Minimum order warning
-    const warningEl = document.getElementById('min-order-warning');
-    const gapEl = document.getElementById('min-order-gap');
-    if (count > 0 && total < MIN_ORDER_AMOUNT) {
-        gapEl.innerText = `₹${MIN_ORDER_AMOUNT - total}`;
-        warningEl.style.display = 'block';
-    } else {
-        warningEl.style.display = 'none';
-    }
 
     validateForm();
 }
