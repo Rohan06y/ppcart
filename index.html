@@ -5976,5 +5976,32 @@ function filterCategory(event, category) {
 <!-- ✅ Supabase Order Saving -->
 <script type="module" src="customer.js"></script>
 
+<!-- ✅ Back Button Trap: Goes to Home instead of leaving site -->
+<script>
+    // Push a fake history entry so back button hits it first
+    history.pushState(null, null, window.location.href);
+
+    window.addEventListener('popstate', function () {
+        // Push the state again to keep trapping
+        history.pushState(null, null, window.location.href);
+
+        // Scroll smoothly to top (Home)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Also close any open modal if visible
+        const modal = document.getElementById('menuModal');
+        if (modal && modal.style.display === 'flex') {
+            modal.style.display = 'none';
+        }
+
+        // Collapse the checkout drawer if open
+        const drawer = document.getElementById('checkoutDrawer');
+        if (drawer && !drawer.classList.contains('collapsed')) {
+            drawer.classList.add('collapsed');
+            drawerOpen = false;
+        }
+    });
+</script>
+
 </body>
 </html>
