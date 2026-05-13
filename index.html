@@ -10024,7 +10024,7 @@
 
         <div style="display:flex;flex-direction:column;align-items:center;gap:0px;padding:4px 0;">
             <div style="font-size:48px;color:#ff7a00;font-weight:900;line-height:0.5;">&#94;</div>
-            <div style="font-size:13px;color:#ff7a00;font-weight:700;letter-spacing:0.5px;margin-top:-4px;">🛒 VIEW CART</div>
+            <div style="font-size:16px;color:#fff;font-weight:800;letter-spacing:1px;margin-top:2px;background:linear-gradient(135deg,#ff7a00,#ff3d00);padding:5px 18px;border-radius:20px;box-shadow:0 3px 10px rgba(255,122,0,0.4);">🛒 VIEW CART</div>
         </div>
 
     </div>
@@ -10591,23 +10591,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const drawer = document.getElementById("checkoutDrawer");
     if (!drawer) return;
 
-    window.addEventListener("touchstart", function (e) {
+    // Listen ONLY on the drawer itself — no interference with page scrolling
+    drawer.addEventListener("touchstart", function (e) {
         touchStartY = e.touches[0].clientY;
         touchStartX = e.touches[0].clientX;
     }, { passive: true });
 
-    window.addEventListener("touchend", function (e) {
+    drawer.addEventListener("touchend", function (e) {
         const deltaY = touchStartY - e.changedTouches[0].clientY;
         const deltaX = Math.abs(touchStartX - e.changedTouches[0].clientX);
 
+        // Ignore if more horizontal than vertical, or too short
         if (Math.abs(deltaY) < 25 || deltaX > Math.abs(deltaY)) return;
 
         if (deltaY > 0 && !drawerOpen) {
-            // Swipe UP anywhere → open drawer
+            // Swipe UP on drawer → open
             drawer.classList.remove("collapsed");
             drawerOpen = true;
         } else if (deltaY < 0 && drawerOpen) {
-            // Swipe DOWN → close drawer
+            // Swipe DOWN on drawer → close
             drawer.classList.add("collapsed");
             drawerOpen = false;
         }
