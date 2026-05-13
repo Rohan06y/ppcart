@@ -31,14 +31,11 @@
 }
 
 /* HIDE ORDER PANEL */
-/* Body se purana padding-bottom hata dein ya kam karein */
-body { 
-    padding-bottom: 100px; 
-}
+/* Removed duplicate padding-bottom — defined once below */
 
-/* Drawer hidden state: sirf thoda sa handle dikhega */
+/* Drawer hidden state: only handle peeks out */
 .checkout-drawer.collapsed {
-    transform: translateY(calc(75%)); 
+    transform: translateY(calc(100% - 68px));
 }
 
 /* Jab collapsed nahi hoga tab poora dikhega */
@@ -10023,10 +10020,11 @@ body {
 <div class="checkout-drawer collapsed" id="checkoutDrawer">
     
     <div class="slide-handle" onclick="toggleDrawer()" 
-         style="width: 100%; height: 30px; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+         style="width: 100%; height: 44px; display: flex; justify-content: center; align-items: center; cursor: pointer; touch-action: none;">
 
-        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 0;">
-            <div style="font-size:42px;color:#ff7a00;line-height:1;font-weight:300;opacity:0.85;filter:blur(0.3px);">&#8963;</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0px;padding:4px 0;">
+            <div style="font-size:48px;color:#ff7a00;font-weight:900;line-height:0.5;">&#94;</div>
+            <div style="font-size:13px;color:#ff7a00;font-weight:700;letter-spacing:0.5px;margin-top:-4px;">🛒 VIEW CART</div>
         </div>
 
     </div>
@@ -10584,6 +10582,37 @@ function toggleDrawer() {
         drawerOpen = true;
     }
 }
+
+// ===== SWIPE GESTURE SUPPORT FOR CART DRAWER =====
+document.addEventListener("DOMContentLoaded", function () {
+    let touchStartY = 0;
+    let touchStartX = 0;
+
+    const drawer = document.getElementById("checkoutDrawer");
+    if (!drawer) return;
+
+    window.addEventListener("touchstart", function (e) {
+        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    window.addEventListener("touchend", function (e) {
+        const deltaY = touchStartY - e.changedTouches[0].clientY;
+        const deltaX = Math.abs(touchStartX - e.changedTouches[0].clientX);
+
+        if (Math.abs(deltaY) < 25 || deltaX > Math.abs(deltaY)) return;
+
+        if (deltaY > 0 && !drawerOpen) {
+            // Swipe UP anywhere → open drawer
+            drawer.classList.remove("collapsed");
+            drawerOpen = true;
+        } else if (deltaY < 0 && drawerOpen) {
+            // Swipe DOWN → close drawer
+            drawer.classList.add("collapsed");
+            drawerOpen = false;
+        }
+    }, { passive: true });
+});
 function filterCategory(event, category) {
     document.querySelectorAll('.cat-icon').forEach(icon => {
         icon.classList.remove('active');
