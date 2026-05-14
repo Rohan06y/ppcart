@@ -228,45 +228,57 @@
         .modal { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center; backdrop-filter: blur(5px); }
         .modal-content { max-width: 90%; max-height: 80%; border-radius: 20px; }
         /* CATEGORY BAR */
-        
-/* ICON CATEGORY BAR */
 .category-bar {
     display: flex;
-    gap: 18px;
-    padding: 15px;
+    gap: 12px;
+    padding: 14px 15px;
     overflow-x: auto;
     background: #fff;
     border-bottom: 1px solid #eee;
+    scrollbar-width: none;
 }
+.category-bar::-webkit-scrollbar { display: none; }
 
 .cat-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    min-width: 70px;
+    min-width: 68px;
     transition: 0.2s;
 }
 
 .cat-emoji {
-    font-size: 28px;
-    background: #fff3e6;
-    padding: 12px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    border: 2px solid transparent;
+    border: 2.5px solid transparent;
+    background: #fff3e6;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cat-emoji img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .cat-label {
     margin-top: 6px;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     color: #333;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 68px;
 }
 
 .cat-icon.active .cat-emoji {
-    border: 2px solid var(--pp-orange);
-    background: #ffe0cc;
-    transform: scale(1.1);
+    border: 2.5px solid var(--pp-orange);
+    box-shadow: 0 0 0 3px #ffe0cc;
 }
 
 .cat-icon.active .cat-label {
@@ -430,61 +442,78 @@
     </div>
 </div>
 <!-- CATEGORY FILTER -->
-<!-- CATEGORY ICON BAR -->
 <div class="category-bar" id="category-bar">
+
     <div class="cat-icon active" onclick="filterCategory(event,'all')">
-        <div class="cat-emoji">🛒</div>
+        <div class="cat-emoji" style="background:#fff3e6;">
+            <img src="" alt="All" onerror="this.style.display='none';this.parentNode.innerHTML='🛒';">
+        </div>
         <div class="cat-label">All</div>
-        
     </div>
-     <div class="cat-icon active" onclick="filterCategory(event,'Atta Dal Rice')">
-        <div class="cat-emoji">🌾</div>
+
+    <div class="cat-icon" onclick="filterCategory(event,'Atta Dal Rice')">
+        <div class="cat-emoji" style="background:#f0faf0;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-202-1770810466061&w=640&q=75" alt="Atta Dal Rice" onerror="this.style.display='none';this.parentNode.innerHTML='🌾';">
+        </div>
         <div class="cat-label">Atta Dal Rice</div>
-
-    </div>
-    <div class="cat-icon active" onclick="filterCategory(event,'Edible Oils/Ghee')">
-        <div class="cat-emoji">🌾</div>
-        <div class="cat-label">Edible Oils/Ghee</div>   
-        
-    </div>
-     <div class="cat-icon active" onclick="filterCategory(event,'Spices and Masale')">
-        <div class="cat-emoji">🌾</div>
-        <div class="cat-label">Spices and Masale</div>
-
     </div>
 
-    <div class="cat-icon active" onclick="filterCategory(event,'Namkeen/Chips')">
-        <div class="cat-emoji">🍟</div>
+    <div class="cat-icon" onclick="filterCategory(event,'Edible Oils/Ghee')">
+        <div class="cat-emoji" style="background:#fffbea;">
+            <img src="https://skmart-prod.s3.ap-south-1.amazonaws.com/skm/product-30799-1744876394037" alt="Oils/Ghee" onerror="this.style.display='none';this.parentNode.innerHTML='🫙';">
+        </div>
+        <div class="cat-label">Oils/Ghee</div>
+    </div>
+
+    <div class="cat-icon" onclick="filterCategory(event,'Spices and Masale')">
+        <div class="cat-emoji" style="background:#fff0f0;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-5058-1744199544714&w=640&q=75" alt="Spices" onerror="this.style.display='none';this.parentNode.innerHTML='🌶️';">
+        </div>
+        <div class="cat-label">Spices</div>
+    </div>
+
+    <div class="cat-icon" onclick="filterCategory(event,'Namkeen/Chips')">
+        <div class="cat-emoji" style="background:#fff5e6;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6794-1744376910588&w=640&q=75" alt="Namkeen" onerror="this.style.display='none';this.parentNode.innerHTML='🥨';">
+        </div>
         <div class="cat-label">Namkeen/Chips</div>
-    
     </div>
 
-    <div class="cat-icon active" onclick="filterCategory(event,'Sauces & Spreads')">
-        <div class="cat-emoji">🍟</div>
+    <div class="cat-icon" onclick="filterCategory(event,'Sauces & Spreads')">
+        <div class="cat-emoji" style="background:#f0f8ff;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6623-1744364687154&w=640&q=75" alt="Sauces" onerror="this.style.display='none';this.parentNode.innerHTML='🥫';">
+        </div>
         <div class="cat-label">Sauces & Spreads</div>
-    
-    
-        
     </div>
-    <div class="cat-icon active" onclick="filterCategory(event,'Beauty Products')">
-        <div class="cat-emoji">🧴</div>
-        <div class="cat-label">Beauty Products</div>
-        
+
+    <div class="cat-icon" onclick="filterCategory(event,'Beauty Products')">
+        <div class="cat-emoji" style="background:#fff0f8;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-58013-1744700343127&w=640&q=75" alt="Beauty" onerror="this.style.display='none';this.parentNode.innerHTML='💄';">
+        </div>
+        <div class="cat-label">Beauty</div>
     </div>
-    <div class="cat-icon active" onclick="filterCategory(event,'Cookies/Biscuits')">
-        <div class="cat-emoji">🍪</div>
+
+    <div class="cat-icon" onclick="filterCategory(event,'Cookies/Biscuits')">
+        <div class="cat-emoji" style="background:#fdf5e6;">
+            <img src="https://www.spices.com.mt/wp-content/uploads/2022/05/PARLE-G-79.9-GR.jpg" alt="Biscuits" onerror="this.style.display='none';this.parentNode.innerHTML='🍪';">
+        </div>
         <div class="cat-label">Cookies/Biscuits</div>
-        
     </div>
+
     <div class="cat-icon" onclick="filterCategory(event,'dairy')">
-        <div class="cat-emoji">🥛</div>
+        <div class="cat-emoji" style="background:#f0f8ff;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-3389-1768974886066&w=640&q=75" alt="Dairy" onerror="this.style.display='none';this.parentNode.innerHTML='🥛';">
+        </div>
         <div class="cat-label">Dairy</div>
     </div>
 
     <div class="cat-icon" onclick="filterCategory(event,'drinks')">
-        <div class="cat-emoji">🥤</div>
+        <div class="cat-emoji" style="background:#eeffee;">
+            <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-4293-1744538985560&w=640&q=75" alt="Drinks" onerror="this.style.display='none';this.parentNode.innerHTML='🥤';">
+        </div>
         <div class="cat-label">Drinks</div>
     </div>
+
 </div>
 
     
@@ -535,7 +564,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Too Yum Bhoot Chips 82g" data-price="30">
+    <div class="product-card" data-name="Too Yum Bhoot Chips 82g" data-price="30"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://cdn.zeptonow.com/production/tr:w-600,ar-1000-1000,pr-true,f-auto,q-80/cms/product_variant/f2896357-6194-4740-99bf-395852772f1d.jpeg" alt="Parle G">
         </div>
@@ -557,7 +586,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Fruit beer " data-price="75">
+    <div class="product-card" data-name="Fruit beer " data-price="75"data-category="drinks">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://tse4.mm.bing.net/th/id/OIP.wzvOqdwlC82MillCmnqTjAAAAA?pid=Api&P=0&h=180" alt="fruit beer">
         </div>
@@ -601,7 +630,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Haldiram Aloo Bhujia 1kg" data-price="192">
+    <div class="product-card" data-name="Haldiram Aloo Bhujia 1kg" data-price="192"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://m.media-amazon.com/images/I/81cLdDnfmFL._SX679_.jpg" alt="Namkeen">
         </div>
@@ -623,7 +652,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Maggie Veg Atta 425g" data-price="155">
+    <div class="product-card" data-name="Maggie Veg Atta 425g" data-price="155"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://tse1.mm.bing.net/th/id/OIP.gg5utSM93Nd8aDL3ds9xCwHaCt?pid=Api&P=0&h=180" alt="Maggie">
         </div>
@@ -645,7 +674,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Kissan tomato ketchup 1.1kg" data-price="120">
+    <div class="product-card" data-name="Kissan tomato ketchup 1.1kg" data-price="120"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.keomart.com/wp-content/uploads/2024/03/15533619-1711691252620.jpg" alt="Tomato ketchup">
         </div>
@@ -667,7 +696,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Tata Salt 1 kg" data-price="26">
+    <div class="product-card" data-name="Tata Salt 1 kg" data-price="26"data-category="Spices and Masale">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://m.media-amazon.com/images/I/614mm2hYHyL._SL1000_.jpg" alt="Salt">
         </div>
@@ -689,7 +718,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Harpic toilet cleaner 1 L" data-price="209">
+    <div class="product-card" data-name="Harpic toilet cleaner 1 L" data-price="209"data-category="Beauty Products">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://m.media-amazon.com/images/I/51lLV8HHb4L._SL1000_.jpg" alt=" toilet cleaner">
         </div>
@@ -2537,7 +2566,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Lays Classic Salted 48g" data-price="18">
+    <div class="product-card" data-name="Lays Classic Salted 48g" data-price="18"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6798-1744377124972&w=640&q=75">
         </div>
@@ -2559,7 +2588,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Lays Classic Salted 67g" data-price="27">
+    <div class="product-card" data-name="Lays Classic Salted 67g" data-price="27"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6799-1751007550475&w=640&q=75">
         </div>
@@ -2581,7 +2610,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Lays Hot And Chilli 48g" data-price="18">
+    <div class="product-card" data-name="Lays Hot And Chilli 48g" data-price="18"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6801-1768990456673&w=640&q=75">
         </div>
@@ -2603,7 +2632,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Lays Indian Magic Masala 48g" data-price="18">
+    <div class="product-card" data-name="Lays Indian Magic Masala 48g" data-price="18"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6804-1744377203620&w=640&q=75">
         </div>
@@ -2625,7 +2654,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Lays Indian Magic Masala 67g" data-price="27">
+    <div class="product-card" data-name="Lays Indian Magic Masala 67g" data-price="27"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6805-1768894004009&w=640&q=75">
         </div>
@@ -2647,7 +2676,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Lays Spanish Tomato Tango 48g" data-price="18">
+    <div class="product-card" data-name="Lays Spanish Tomato Tango 48g" data-price="18"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-6815-1744380144612&w=640&q=75">
         </div>
@@ -2669,7 +2698,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Parle Rusk Real Elaichi Toast 400g" data-price="75">
+    <div class="product-card" data-name="Parle Rusk Real Elaichi Toast 400g" data-price="75"data-category="Cookies/Biscuits">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-8351-1745392367187&w=640&q=75">
         </div>
@@ -2691,7 +2720,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Uncle Chips Spicy 48.1g" data-price="18">
+    <div class="product-card" data-name="Uncle Chips Spicy 48.1g" data-price="18"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-9694-1745829344657&w=640&q=75">
         </div>
@@ -2713,7 +2742,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Too Yum Veggie Sticks Sour Cream And Onion 75g" data-price="29">
+    <div class="product-card" data-name="Too Yum Veggie Sticks Sour Cream And Onion 75g" data-price="29"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-9636-1750921502696&w=640&q=75">
         </div>
@@ -2735,7 +2764,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Too Yum Karare Chilli Achari 70g" data-price="18">
+    <div class="product-card" data-name="Too Yum Karare Chilli Achari 70g" data-price="18"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-9625-1750921826793&w=640&q=75">
         </div>
@@ -2757,7 +2786,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Yellow Banana Chips 125g" data-price="48">
+    <div class="product-card" data-name="Yellow Banana Chips 125g" data-price="48"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-10219-1745829520433&w=640&q=75">
         </div>
@@ -2911,7 +2940,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Pro Nature Raw Peanuts 500g" data-price="157" >
+     <div class="product-card" data-name="Pro Nature Raw Peanuts 500g" data-price="157" data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-31094-1744269111915&w=640&q=75">
         </div>
@@ -2933,7 +2962,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Akash Khatta Meetha Mix 900g" data-price="140">
+     <div class="product-card" data-name="Akash Khatta Meetha Mix 900g" data-price="140"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-36858-1768897326177&w=640&q=75">
         </div>
@@ -2955,7 +2984,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Bikaji Bikaneri Bhujia 1kg" data-price="230">
+     <div class="product-card" data-name="Bikaji Bikaneri Bhujia 1kg" data-price="230"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-38003-1744352569860&w=640&q=75">
         </div>
@@ -2999,7 +3028,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Bikaji Kolkata Chanachur 1kg" data-price="240">
+    <div class="product-card" data-name="Bikaji Kolkata Chanachur 1kg" data-price="240"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-47754-1750765964914&w=640&q=75">
         </div>
@@ -3021,7 +3050,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Bikaji Tana Bana 1kg" data-price="190">
+     <div class="product-card" data-name="Bikaji Tana Bana 1kg" data-price="190"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-47755-1768828330596&w=640&q=75">
         </div>
@@ -3065,7 +3094,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Bikaji Falahari Chips 70g" data-price="22.5">
+     <div class="product-card" data-name="Bikaji Falahari Chips 70g" data-price="22.5"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-47903-1750764527554&w=640&q=75">
         </div>
@@ -3087,7 +3116,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Sunder Surati Mix 700g" data-price="125">
+     <div class="product-card" data-name="Sunder Surati Mix 700g" data-price="125"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-47922-1744701097560&w=640&q=75">
         </div>
@@ -3175,7 +3204,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Too Yum Aloo Bhujia 350g" data-price="89">
+    <div class="product-card" data-name="Too Yum Aloo Bhujia 350g" data-price="89"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-63820-1744725274504&w=640&q=75">
         </div>
@@ -3197,7 +3226,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Too Yum All in One Namkeen 400g" data-price="85">
+     <div class="product-card" data-name="Too Yum All in One Namkeen 400g" data-price="85"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-63821-1744725183391&w=640&q=75">
         </div>
@@ -3219,7 +3248,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Too Yum Bhujia Sev 400g" data-price="90">
+     <div class="product-card" data-name="Too Yum Bhujia Sev 400g" data-price="90"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-63822-1744725372038&w=640&q=75">
         </div>
@@ -3241,7 +3270,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Paansmith five in one 320g" data-price="210">
+     <div class="product-card" data-name="Paansmith five in one 320g" data-price="210"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-64027-1745417166297&w=640&q=75">
         </div>
@@ -3263,7 +3292,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Paansmith three in one 100g" data-price="110">
+     <div class="product-card" data-name="Paansmith three in one 100g" data-price="110"data-category="Namkeen/Chips">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-64028-1745416999753&w=640&q=75">
         </div>
@@ -4341,7 +4370,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Dabar Sarso Amla oil 170ml" data-price="50" >
+     <div class="product-card" data-name="Dabar Sarso Amla oil 170ml" data-price="50" data-category="Beauty Products">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-4599-1746430518964&w=640&q=75">
         </div>
@@ -4363,7 +4392,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Navratna Oil 500ml" data-price="349">
+     <div class="product-card" data-name="Navratna Oil 500ml" data-price="349"data-category="Beauty Products">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-4964-1744192195486&w=640&q=75">
         </div>
@@ -4385,7 +4414,7 @@
             </div>
         </div>
     </div>
-     <div class="product-card" data-name="Nihar Shanti Amla 500ml/550ml" data-price="169">
+     <div class="product-card" data-name="Nihar Shanti Amla 500ml/550ml" data-price="169"data-category="Beauty Products">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7530-1751012849736&w=640&q=75">
         </div>
@@ -5375,7 +5404,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Maggie Masala Noodles 280g" data-price="54">
+    <div class="product-card" data-name="Maggie Masala Noodles 280g" data-price="54"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7055-1744703297166&w=640&q=75">
         </div>
@@ -5419,7 +5448,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Maggie masala Noodles 420g" data-price="79">
+    <div class="product-card" data-name="Maggie masala Noodles 420g" data-price="79"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7056-1744703401758&w=640&q=75">
         </div>
@@ -5441,7 +5470,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Nilons Gren Chilli Pickle 500g" data-price="135">
+    <div class="product-card" data-name="Nilons Gren Chilli Pickle 500g" data-price="135"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7534-1751027171368&w=640&q=75">
         </div>
@@ -5463,7 +5492,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Nilons Classic Mango Pickle 900g" data-price="131">
+    <div class="product-card" data-name="Nilons Classic Mango Pickle 900g" data-price="131"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7552-1770809015286&w=640&q=75">
         </div>
@@ -5485,7 +5514,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Nilons Mixed Pickle 400g" data-price="120">
+    <div class="product-card" data-name="Nilons Mixed Pickle 400g" data-price="120"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7591-1745059697053&w=640&q=75">
         </div>
@@ -5507,7 +5536,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Nilons Mango Pickle 400g" data-price="120">
+    <div class="product-card" data-name="Nilons Mango Pickle 400g" data-price="120"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-7585-1745051161416&w=640&q=75">
         </div>
@@ -5573,7 +5602,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ram Bandhu Achar Masala 200g" data-price="62">
+    <div class="product-card" data-name="Ram Bandhu Achar Masala 200g" data-price="62"data-category="Spices and Masale">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-8788-1751023688205&w=640&q=75">
         </div>
@@ -5595,7 +5624,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ram Bandhu Achar Masala 500g" data-price="140">
+    <div class="product-card" data-name="Ram Bandhu Achar Masala 500g" data-price="140"data-category="Spices and Masale">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-8789-1744285651671&w=640&q=75">
         </div>
@@ -5617,7 +5646,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ram Bandhu Mango Pickle 350g" data-price="75">
+    <div class="product-card" data-name="Ram Bandhu Mango Pickle 350g" data-price="75"data-category="Sauces & Spreads">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-8796-1744285994626&w=640&q=75">
         </div>
@@ -5661,7 +5690,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ginger Garlic Paste" data-price="47">
+    <div class="product-card" data-name="Ginger Garlic Paste" data-price="47"data-category="Spices and Masale">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-9154-1744442569438&w=640&q=75">
         </div>
@@ -5947,7 +5976,7 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Bajaj Almond drop Hair oil 114ml" data-price="81">
+    <div class="product-card" data-name="Bajaj Almond drop Hair oil 114ml" data-price="81"data-category="Beauty Products">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://www.shubhamkmart.com/_next/image?url=https%3A%2F%2Fskmart-prod.s3.ap-south-1.amazonaws.com%2Fskm%2Fproduct-3613-1744273829783&w=640&q=75">
         </div>
