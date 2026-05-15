@@ -10791,7 +10791,7 @@
         placeholder="Didn't find a product? Type here (optional)">
         <div class="location-card" id="location-card">
         <div id="loc-text" style="font-size: 14px; font-weight: 700; color: var(--pp-red); margin-bottom:10px;">📍 Location Required</div>
-        <input type="text" id="cust_landmark" class="input-pill" placeholder="🏠 Landmark (optional) – e.g. near ABC school, opp. XYZ temple">
+        <input type="text" id="cust_landmark" class="input-pill" placeholder="🏠 Landmark (required) – e.g. near ABC school, opp. XYZ temple" oninput="validateForm()" required>
         <!-- Toggle Tabs -->
         <div style="display:flex; gap:8px; margin-bottom:12px;">
             <button id="tab-gps" onclick="switchLocTab('gps')" style="flex:1; padding:9px; border-radius:10px; border:2px solid var(--pp-orange); background:var(--pp-orange); color:#fff; font-weight:700; font-size:14px; cursor:pointer;">📡 Use GPS</button>
@@ -11090,7 +11090,9 @@ document.querySelectorAll('.price-box').forEach(box => {
     const totalText = document.getElementById('total-amount').innerText;
     const total = parseInt(totalText.replace(/\D/g, ''));
 
-    if (!name || !phone || !userCoords) {
+    const landmark = document.getElementById('cust_landmark').value.trim();
+
+    if (!name || !phone || !userCoords || !landmark) {
         btn.disabled = true;
         btn.classList.remove('active');
         btn.innerText = "COMPLETE DETAILS TO ORDER";
@@ -11175,7 +11177,8 @@ ${list}${otherText}
 *GRAND TOTAL:* ₹${grandTotal}
 
 📍 *Delivery Location:*
-${mapsLink}${landmark ? `\n🏠 *Landmark:* ${landmark}` : ""}
+${mapsLink}
+🏠 *Landmark:* ${landmark}
 
 ⚡ Fast Delivery in 15–20 mins`;
 const whatsappNumber = "919826915121"; // ← YOUR NUMBER
