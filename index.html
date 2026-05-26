@@ -56,6 +56,40 @@
 }
 
 
+        /* ===== CLOSED BANNER ===== */
+        .closed-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 99999;
+            background: linear-gradient(135deg, #ff7a00, #ff4500);
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(255, 100, 0, 0.5);
+            animation: pulseBar 2s ease-in-out infinite;
+        }
+        .closed-banner .banner-icon {
+            font-size: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .closed-banner .banner-text {
+            vertical-align: middle;
+        }
+        @keyframes pulseBar {
+            0%   { box-shadow: 0 4px 20px rgba(255, 100, 0, 0.5); }
+            50%  { box-shadow: 0 4px 35px rgba(255, 100, 0, 0.9); }
+            100% { box-shadow: 0 4px 20px rgba(255, 100, 0, 0.5); }
+        }
+        /* Push page content down so banner doesn't overlap header */
+        body { padding-top: 56px; }
+
         :root { 
             --pp-orange: #ff7a00; 
             --pp-dark: #1a1a1a;
@@ -67,7 +101,7 @@
         body { 
             font-family: 'Inter', system-ui, sans-serif; 
             margin: 0; background-color: var(--pp-gray); 
-            padding-bottom: 90px; 
+            padding-bottom: 90px;
         }
 
         /* Header */
@@ -374,6 +408,15 @@
     </style>
 </head>
 <body>
+
+<!-- ===== TEMPORARILY CLOSED BANNER ===== -->
+<div class="closed-banner">
+    <span class="banner-icon">🔒</span>
+    <span class="banner-text">PPCART IS TEMPORARILY CLOSED &nbsp;|&nbsp; SORRY FOR THE INCONVENIENCE</span>
+    <span class="banner-icon">🔒</span>
+</div>
+<!-- ===== END CLOSED BANNER ===== -->
+
 
 
 
@@ -8484,34 +8527,12 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ajay Mala Rough Notebook 300 pages" data-price="40" data-category="Stationery">
+    <div class="product-card" data-name="Ajay Mala Rough Notebook 300 pages" data-price="60" data-category="Stationery">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ5-_0CUuyaSJMw9rFKTOWKpCbEPL7dQoXU_DCFV0orOiCQKTHk">
         </div>
         <div class="prod-info">
             <div class="prod-name">Ajay Mala Rough Notebook 300 pages</div>
-            <div class="price-box">
-              <span class="mrp-price">₹55</span>
-              <span class="sell-price">₹40</span>
-              <span class="discount-tag"></span>
-            </div>
-            <div class="stock-text">Available: <span class="stock-val">100</span></div>
-        </div>
-        <div class="action-area">
-            <button class="add-btn" onclick="updateQty(this, 1)">ADD</button>
-            <div class="qty-control">
-                <button onclick="updateQty(this, -1)">-</button>
-                <span class="qty-val">0</span>
-                <button onclick="updateQty(this, 1)">+</button>
-            </div>
-        </div>
-    </div>
-    <div class="product-card" data-name="Ajay Mala Rough Notebook 400 pages" data-price="50" data-category="Stationery">
-        <div class="prod-img-box" onclick="zoomImage(this)">
-            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ5-_0CUuyaSJMw9rFKTOWKpCbEPL7dQoXU_DCFV0orOiCQKTHk">
-        </div>
-        <div class="prod-info">
-            <div class="prod-name">Ajay Mala Rough Notebook 400 pages</div>
             <div class="price-box">
               <span class="mrp-price">₹65</span>
               <span class="sell-price">₹50</span>
@@ -8528,12 +8549,12 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ajay Mala Rough Notebook 500 pages" data-price="60" data-category="Stationery">
+    <div class="product-card" data-name="Ajay Mala Rough Notebook 400 pages" data-price="60" data-category="Stationery">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ5-_0CUuyaSJMw9rFKTOWKpCbEPL7dQoXU_DCFV0orOiCQKTHk">
         </div>
         <div class="prod-info">
-            <div class="prod-name">Ajay Mala Rough Notebook 500 pages</div>
+            <div class="prod-name">Ajay Mala Rough Notebook 400 pages</div>
             <div class="price-box">
               <span class="mrp-price">₹75</span>
               <span class="sell-price">₹60</span>
@@ -8550,15 +8571,15 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ajay Mala Rough Notebook 600 pages" data-price="80" data-category="Stationery">
+    <div class="product-card" data-name="Ajay Mala Rough Notebook 500 pages" data-price="70" data-category="Stationery">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ5-_0CUuyaSJMw9rFKTOWKpCbEPL7dQoXU_DCFV0orOiCQKTHk">
         </div>
         <div class="prod-info">
-            <div class="prod-name">Ajay Mala Rough Notebook 600 pages</div>
+            <div class="prod-name">Ajay Mala Rough Notebook 500 pages</div>
             <div class="price-box">
-              <span class="mrp-price">₹100</span>
-              <span class="sell-price">₹80</span>
+              <span class="mrp-price">₹85</span>
+              <span class="sell-price">₹70</span>
               <span class="discount-tag"></span>
             </div>
             <div class="stock-text">Available: <span class="stock-val">100</span></div>
@@ -8572,15 +8593,37 @@
             </div>
         </div>
     </div>
-    <div class="product-card" data-name="Ajay Mala Rough Notebook 700 pages" data-price="90" data-category="Stationery">
+    <div class="product-card" data-name="Ajay Mala Rough Notebook 600 pages" data-price="90" data-category="Stationery">
+        <div class="prod-img-box" onclick="zoomImage(this)">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ5-_0CUuyaSJMw9rFKTOWKpCbEPL7dQoXU_DCFV0orOiCQKTHk">
+        </div>
+        <div class="prod-info">
+            <div class="prod-name">Ajay Mala Rough Notebook 600 pages</div>
+            <div class="price-box">
+              <span class="mrp-price">₹100</span>
+              <span class="sell-price">₹90</span>
+              <span class="discount-tag"></span>
+            </div>
+            <div class="stock-text">Available: <span class="stock-val">100</span></div>
+        </div>
+        <div class="action-area">
+            <button class="add-btn" onclick="updateQty(this, 1)">ADD</button>
+            <div class="qty-control">
+                <button onclick="updateQty(this, -1)">-</button>
+                <span class="qty-val">0</span>
+                <button onclick="updateQty(this, 1)">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="product-card" data-name="Ajay Mala Rough Notebook 700 pages" data-price="100" data-category="Stationery">
         <div class="prod-img-box" onclick="zoomImage(this)">
             <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ5-_0CUuyaSJMw9rFKTOWKpCbEPL7dQoXU_DCFV0orOiCQKTHk">
         </div>
         <div class="prod-info">
             <div class="prod-name">Ajay Mala Rough Notebook 700 pages</div>
             <div class="price-box">
-              <span class="mrp-price">₹115</span>
-              <span class="sell-price">₹90</span>
+              <span class="mrp-price">₹125</span>
+              <span class="sell-price">₹100</span>
               <span class="discount-tag"></span>
             </div>
             <div class="stock-text">Available: <span class="stock-val">100</span></div>
