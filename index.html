@@ -56,40 +56,6 @@
 }
 
 
-        /* ===== CLOSED BANNER ===== */
-        .closed-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 99999;
-            background: linear-gradient(135deg, #ff7a00, #ff4500);
-            color: #fff;
-            text-align: center;
-            padding: 14px 20px;
-            font-family: 'Inter', system-ui, sans-serif;
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 20px rgba(255, 100, 0, 0.5);
-            animation: pulseBar 2s ease-in-out infinite;
-        }
-        .closed-banner .banner-icon {
-            font-size: 20px;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-        .closed-banner .banner-text {
-            vertical-align: middle;
-        }
-        @keyframes pulseBar {
-            0%   { box-shadow: 0 4px 20px rgba(255, 100, 0, 0.5); }
-            50%  { box-shadow: 0 4px 35px rgba(255, 100, 0, 0.9); }
-            100% { box-shadow: 0 4px 20px rgba(255, 100, 0, 0.5); }
-        }
-        /* Push page content down so banner doesn't overlap header */
-        body { padding-top: 56px; }
-
         :root { 
             --pp-orange: #ff7a00; 
             --pp-dark: #1a1a1a;
@@ -101,7 +67,7 @@
         body { 
             font-family: 'Inter', system-ui, sans-serif; 
             margin: 0; background-color: var(--pp-gray); 
-            padding-bottom: 90px;
+            padding-bottom: 90px; 
         }
 
         /* Header */
@@ -408,15 +374,6 @@
     </style>
 </head>
 <body>
-
-<!-- ===== TEMPORARILY CLOSED BANNER ===== -->
-<div class="closed-banner">
-    <span class="banner-icon">🔒</span>
-    <span class="banner-text">PPCART IS TEMPORARILY CLOSED &nbsp;|&nbsp; SORRY FOR THE INCONVENIENCE</span>
-    <span class="banner-icon">🔒</span>
-</div>
-<!-- ===== END CLOSED BANNER ===== -->
-
 
 
 
